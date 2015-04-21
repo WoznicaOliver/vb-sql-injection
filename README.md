@@ -3,7 +3,7 @@
 # vb-sql-injection
 **User login application which is vulnerable to SQL injection**
 
-SQL injection attacks often happen when applications don't screen user input before they send it to a database. If a user can send commands to the database, and the database executes these commands, then all kinds of bad things can happen.
+SQL injection attacks often happen when applications don't screen/validate user input before they send it to a database. If a user can send commands to the database, and the database executes these commands, then all kinds of bad things can happen.
 
 This application uses typical SQL login code to demonstrate. 
 
@@ -39,13 +39,13 @@ Since you just created the database, you know that there is no user called `what
 
     select userid, username from userdata where userid = 'whatever' or '1'='1' and password = '1'='1' 
 
-'1' is always equal to '1' so all of the rows are returned. Your program assumes 1 or 0 rows will be returned, so if the number of rows is not 0, then assumes the username and password were correct, it reads the username from the first row and displays the welcome message. To make matters worse, the administrator is usually the first row in the database. This is an example of **SQL injection**.
+'1' is always equal to '1' so all of the rows are returned. Your program assumes 1 or 0 rows will be returned, so if the number of rows is not 0, then it assumes the username and password were correct; and it reads the username from the first row, and then displays the welcome message. To make matters worse, the administrator is usually the first row in the database. This is an example of **SQL injection**.
 
 **Note** The program prints messages to the Output window so you can see the query being sent to the database and the rows returned. **Don't** do this in a real application!
 
 In addition to logging in as admin, there's more you can do with SQL injection.
 
-Even though we can gain access to the admmin account, we don't actually know the admin's password. With a little trial-and-error, we can discover the password. Try typing `admin` for the username and this for the password
+Even though we can gain access to the admin account, we don't actually know the admin's password. With a little trial-and-error, we can discover the password. Try typing `admin` for the username and this for the password
 
     ' or password like 'a%
 
