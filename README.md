@@ -3,6 +3,8 @@
 # vb-sql-injection
 **User login application which is vulnerable to SQL injection**
 
+**prerequisites: SQLServer express installed on your machine. **
+
 SQL injection attacks often happen when applications don't screen/validate user input before they send it to a database. If a user can send commands to the database, and the database executes these commands, then all kinds of bad things can happen.
 
 This application uses typical SQL login code to demonstrate. 
