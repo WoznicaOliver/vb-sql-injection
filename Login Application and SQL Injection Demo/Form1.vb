@@ -21,9 +21,6 @@ Public Class Form1
         Console.WriteLine("SQL string sent to DB:")
         Console.WriteLine(getPasswordSQL)
 
-        Dim de As DirectoryEntry = New DirectoryEntry(LDAP://www.TestLDAP.com/ou=People,OU=broker,dc=com,dc=testldap)
-        de.AuthenticationType = AuthenticationTypes.None ' non-compliant
-
         Try
 
             objPasswordsDataAdapter = New SqlDataAdapter(getPasswordSQL, objConnection)
@@ -60,6 +57,13 @@ Public Class Form1
             MessageBox.Show("Error occurred : " + ex.Message)
 
         End Try
+
+    End Sub
+
+    Public Sub DoSomething()
+
+        Dim Hres1 As Integer = CoSetProxyBlanket(Nothing, 0, 0, Nothing, 0, 0, IntPtr.Zero, 0) ' Noncompliant
+        Dim Hres2 As Integer = CoInitializeSecurity(IntPtr.Zero, -1, IntPtr.Zero, IntPtr.Zero, RpcAuthnLevel.None, RpcImpLevel.Impersonate, IntPtr.Zero, EoAuthnCap.None, IntPtr.Zero) ' Noncompliant
 
     End Sub
 
