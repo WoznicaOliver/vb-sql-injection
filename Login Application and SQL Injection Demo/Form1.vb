@@ -16,6 +16,9 @@ Public Class Form1
 
         Dim getPasswordSQL As String = "SELECT userid, username FROM userdata WHERE userid = '" + userid + "' AND password = '" + password + "'"
 
+        Dim cookie As HttpCookie = New HttpCookie("Sensitive data")
+	    cookie.HTTPOnly = False
+
         'This line is to show the SQL string sent to the database, to help you build malicious SQL.
         'While it's useful to understand this application's behavior, ** don't ** do this in a real application!
         Console.WriteLine("SQL string sent to DB:")
