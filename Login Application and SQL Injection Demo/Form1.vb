@@ -6,6 +6,9 @@ Public Class Form1
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
+        app.UseDeveloperExceptionPage()
+        app.UseMigrationsEndPoint()
+        
         'Connect to the database
         Dim objConnection As New SqlConnection("server=localhost\sqlexpress;database=users;user id=sa;password=password") 'Change to your actual password!
         Dim objPasswordsDataAdapter As SqlDataAdapter
@@ -20,6 +23,12 @@ Public Class Form1
         'While it's useful to understand this application's behavior, ** don't ** do this in a real application!
         Console.WriteLine("SQL string sent to DB:")
         Console.WriteLine(getPasswordSQL)
+
+        Dim cookie As HttpCookie = New HttpCookie("Sensitive data")
+	        cookie.HTTPOnly = False
+
+        Dim Hres1 As Integer = CoSetProxyBlanket(Nothing, 0, 0, Nothing, 0, 0, IntPtr.Zero, 0) ' Noncompliant
+        Dim Hres2 As Integer = CoInitializeSecurity(IntPtr.Zero, -1, IntPtr.Zero, IntPtr.Zero, RpcAuthnLevel.None, RpcImpLevel.Impersonate, IntPtr.Zero, EoAuthnCap.None, IntPtr.Zero) ' Noncompliant
 
         Try
 
