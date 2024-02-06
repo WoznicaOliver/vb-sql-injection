@@ -2,6 +2,8 @@
 
 Public Class Form1
 
+    'Adding this comment to trigger a pull request and scan the code
+
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
         'Connect to the database
