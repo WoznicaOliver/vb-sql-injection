@@ -3,6 +3,7 @@
 Public Class Form1
 
     'Adding this comment to trigger a pull request and scan the code
+    'the file structure for this app is kinda weird
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
 
