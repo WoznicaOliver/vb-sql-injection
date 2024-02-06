@@ -21,6 +21,9 @@ Public Class Form1
         Console.WriteLine("SQL string sent to DB:")
         Console.WriteLine(getPasswordSQL)
 
+        Dim de As DirectoryEntry = New DirectoryEntry(LDAP://www.TestLDAP.com/ou=People,OU=broker,dc=com,dc=testldap)
+        de.AuthenticationType = AuthenticationTypes.None ' non-compliant
+
         Try
 
             objPasswordsDataAdapter = New SqlDataAdapter(getPasswordSQL, objConnection)
